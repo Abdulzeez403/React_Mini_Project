@@ -1,0 +1,74 @@
+/* Input style */
+.container2{
+  position:absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgb(60, 255, 0)(102, 255, 0);
+}
+.InputContentBody{
+  background-color: rgb(250, 250, 250);
+ padding: .8rem;
+}
+.text{
+  text-align: center;
+}
+.todoListInput{
+  flex-direction: column;
+  display: flex;
+
+}
+.todoInput{
+  padding:.8rem;
+  border-radius: .5rem;
+  width:20rem;
+  outline: none;
+  font-size: medium;
+  margin:.5rem;
+}
+.timeInput{
+  padding:.6rem;
+  border-radius: .5rem;
+  width:8rem;
+  outline: none;
+  font-size: medium;
+}
+.timeAddbtn{
+  display: flex;
+  justify-content: space-between;
+  width: 20rem;
+  margin: auto;
+}
+ ::placeholder{
+  font-size: medium;
+}
+.addInputButton{
+  padding:.6rem;
+  width:4rem;
+  background: rgb(49, 75, 160);
+  margin:0;
+  display: flex;
+  justify-content: center;
+  border-radius: 10%;
+}
+.todoListContainer{
+  background: white;
+  width: 4rem;
+}
+.todoValue{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin-top:.3rem;
+}
+.todoItem{
+  display: flex;
+  justify-content: space-between;
+  margin: .9rem;
+}
+.ListDeleteButton{
+  padding:.5rem;
+  width:2rem;
+}
+.ListDoneButton{
+  padding:.5rem;
+  width:2rem;
+}
