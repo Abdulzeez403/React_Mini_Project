@@ -17,7 +17,7 @@ const List = (props) => {
 
   const[addList, setaddList] =useState([]);
   const[todoList, settodoList] =useState('');
-  const[inputcomponent, setInputcomponent] = useState(false);
+  const[inputcomponent, setInputcomponent] = useState(true);
 
   const addMeToTheList=()=>{
   const taskList ={
@@ -28,10 +28,16 @@ const List = (props) => {
     complete: false
   }
   setaddList([...addList, taskList]);
-}
-/*const popInput =()=>{
   setInputcomponent(true);
-}*/
+
+}
+const popInput =()=>{
+  setInputcomponent(true);
+}
+const UnpopInput =()=>{
+  setInputcomponent(false);
+}
+
 
 const todoListValue =(e)=>{
   settodoList(e.target.value)
@@ -107,7 +113,7 @@ const MarkDoneTask =(id)=>{
 
 
 
-<div className={styled.addBtn} onClick={popInput}>
+<div className={styled.addBtn} onClick={UnpopInput}>
   <MdAddCircleOutline color="blue"size={40}/>
 </div>
 
