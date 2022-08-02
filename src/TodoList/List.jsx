@@ -23,6 +23,8 @@ const List = (props) => {
   const taskList ={
     id: addList.length === 0 ? 1 : addList[addList.length - 1].id + 1,
     taskName: todoList,
+    taskTitle: todoList,
+    taskTime: todoList,
     complete: false
   }
   setaddList([...addList, taskList]);
@@ -79,12 +81,12 @@ const MarkDoneTask =(id)=>{
     <BsCheck color="White" size={30} />
     </div>
   <div className={styled.taskName}>
-<h4>{task.taskName}</h4>
-<p>Wakada 2</p>
+<h4>{task.taskTitle}</h4>
+<p>{task.taskName}</p>
   </div>
 
   <div className={styled.taskTime}>
-<h6> <TiTime/>10:30AM</h6>
+<h6> <TiTime/>{task.taskTime}</h6>
 <p>
   <AiFillStar/>
   <AiFillStar/>
