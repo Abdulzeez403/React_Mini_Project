@@ -17,6 +17,8 @@ const List = (props) => {
 
   const[addList, setaddList] =useState([]);
   const[todoList, settodoList] =useState('');
+  const[todoTitle, settodoTitle] =useState('');
+  const[todoTime, settodoTime] =useState('');
   const[inputcomponent, setInputcomponent] = useState(true);
   const[removeAddbtn, setRemoveAddbtn]= useState(false);
 
@@ -24,8 +26,8 @@ const List = (props) => {
   const taskList ={
     id: addList.length === 0 ? 1 : addList[addList.length - 1].id + 1,
     taskName: todoList,
-    taskTitle: todoList,
-    taskTime: todoList,
+    taskTitle: todoTitle,
+    taskTime: todoTime,
     complete: false
   }
   setaddList([...addList, taskList]);
@@ -45,7 +47,7 @@ const UnpopInput =()=>{
 
 
 const todoListValue =(e)=>{
-  settodoList(e.target.value)
+  settodoList(e.target.value);
 }
 
 
@@ -133,7 +135,7 @@ onClick={UnpopInput}>
       <input className={style.todoInput}
        type="text" 
        placeholder='Add tasks....'
-       onChange={todoListValue}/>
+       onChange={(e)=>settodoTitle(e.target.value)}/>
         <input className={style.todoInput}
        type="text" 
        placeholder='Add tasks....'
@@ -143,7 +145,7 @@ onClick={UnpopInput}>
 <input className={style.timeInput}
        type="time" 
        placeholder='Add tasks....'
-       onChange={todoListValue}/>
+       onChange={(e)=>settodoTime(e.target.value)} />
       <div  className={style.addInputButton}
       onClick={addMeToTheList}>
         <MdLibraryAddCheck color="white" size={30}  />
