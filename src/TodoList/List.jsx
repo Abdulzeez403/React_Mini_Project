@@ -18,6 +18,7 @@ const List = (props) => {
   const[addList, setaddList] =useState([]);
   const[todoList, settodoList] =useState('');
   const[inputcomponent, setInputcomponent] = useState(true);
+  const[removeAddbtn, setRemoveAddbtn]= useState(false);
 
   const addMeToTheList=()=>{
   const taskList ={
@@ -28,15 +29,19 @@ const List = (props) => {
     complete: false
   }
   setaddList([...addList, taskList]);
-  setInputcomponent(true);
-
+  popInput();
+  setRemoveAddbtn(false);
 }
 const popInput =()=>{
   setInputcomponent(true);
 }
 const UnpopInput =()=>{
   setInputcomponent(false);
+  setRemoveAddbtn(true);
+
+
 }
+
 
 
 const todoListValue =(e)=>{
@@ -113,7 +118,9 @@ const MarkDoneTask =(id)=>{
 
 
 
-<div className={styled.addBtn} onClick={UnpopInput}>
+<div className={styled.addBtn} 
+style={{visibility: removeAddbtn? "hidden": "visible"}}
+onClick={UnpopInput}>
   <MdAddCircleOutline color="blue"size={40}/>
 </div>
 
