@@ -3,7 +3,7 @@ import List from "./TodoList/List";
 function App() {
   return (
     <div className="App">
-      <List/>
+      <h4>Hello, React!</h4>
     </div>
   );
 }
