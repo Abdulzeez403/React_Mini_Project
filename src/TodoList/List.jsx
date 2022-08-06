@@ -4,7 +4,7 @@ import style from './todoList.module.css';
 import {BsCheck} from 'react-icons/bs'; 
 import {IoClose} from 'react-icons/io';
 import {TiTime} from 'react-icons/ti';
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import { MdLibraryAdd, MdLibraryAddCheck, MdAddCircleOutline } from 'react-icons/md';
 import {AiFillStar, AiOutlineStar, AiOutlineFieldTime} from 'react-icons/ai';
 import TodoList from './todoList';
@@ -13,7 +13,7 @@ import TodoList from './todoList';
 
 
 
-const List = (props) => {
+const List = () => {
 
   const[addList, setaddList] =useState([]);
   const[todoList, settodoList] =useState('');
@@ -21,6 +21,12 @@ const List = (props) => {
   const[todoTime, settodoTime] =useState('');
   const[inputcomponent, setInputcomponent] = useState(true);
   const[removeAddbtn, setRemoveAddbtn]= useState(false);
+  const[year, setYear]=useState('');
+  const[day, setday]=useState('');
+  const[month, setMonth]=useState('');
+  const[dayname, setdayname]=useState('');
+  const[mark, setMark]=useState(false);
+  
 
   const addMeToTheList=()=>{
   const taskList ={
@@ -40,22 +46,39 @@ const popInput =()=>{
 const UnpopInput =()=>{
   setInputcomponent(false);
   setRemoveAddbtn(true);
-
-
 }
-
-
 
 const todoListValue =(e)=>{
   settodoList(e.target.value);
 }
+// Date now
+useEffect(()=>{
+
+  // variable
+  const months =["January", "February", "March", "April", "May","June", "july", "August","September", "october", "November", "December"];
+  const days =['Sunday', 'Monday', 'Tuesday','Wednesday', 'Thursday', 'Friday', 'Saturday']
+const dated =()=>{
+  const d = new Date();
+   const day = d.getDay();
+   const dayname = days[d.getDay()];
+   const year = d.getFullYear();
+  const month = months[d.getMonth()];
+  
+   setYear(year);
+  setday(day);
+  setMonth(month);
+  setdayname(dayname)
+}
+dated();
+} , [])
 
 
 const deleteMe=(id)=>{
   setaddList(addList.filter((task)=> task.id !== id ))
 }
 const MarkDoneTask =(id)=>{
-  setaddList(addList.map((task)=> task.id === id ?  {...task, complete:true}: task ))
+  setaddList(addList.map((task)=> task.id === id ?  {...task, complete:true}: task ));
+  setMark(true);
 }
   return ( 
     <div className={styled.container}>
@@ -69,13 +92,13 @@ const MarkDoneTask =(id)=>{
   <div className={styled.col2}>
     <div className={styled.MonthWeek}>
       <div className={styled.monthYear}>
-      <h2>12</h2>
+      <h2>{day < 10? "0"+day: day }</h2>
         <span>
-        <h6>December</h6>
-        <h6>2021</h6>
+        <h6>{month}</h6>
+        <h6>{year}</h6>
         </span>
       </div>
-      <h4>Saturday</h4>
+      <h4>{dayname}</h4>
     </div>
   </div>
 
@@ -109,7 +132,9 @@ const MarkDoneTask =(id)=>{
 
   </div>
   </div>
-<div className={styled.taskChecker}>
+<div className={styled.taskChecker}
+style={{background: mark && "red"}}
+ onClick={MarkDoneTask}>
 
 </div>
    </div>
