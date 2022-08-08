@@ -2,14 +2,14 @@
 import styled from './List.module.css';
 import style from './todoList.module.css';
 import {BsCheck} from 'react-icons/bs'; 
-import {IoClose} from 'react-icons/io';
+//import {IoClose} from 'react-icons/io';
 import {TiTime} from 'react-icons/ti';
 import {useState, useEffect} from 'react';
-import { MdLibraryAdd, MdLibraryAddCheck, MdAddCircleOutline } from 'react-icons/md';
-import {AiFillStar, AiOutlineStar, AiOutlineFieldTime} from 'react-icons/ai';
-import TodoList from './todoList';
+import {  MdLibraryAddCheck, MdAddCircleOutline } from 'react-icons/md';
+import {AiFillStar, AiOutlineStar,} from 'react-icons/ai';
 
-
+// Unused Icons
+// // MdLibraryAdd,  AiOutlineFieldTime
 
 
 
@@ -73,9 +73,9 @@ dated();
 } , [])
 
 
-const deleteMe=(id)=>{
-  setaddList(addList.filter((task)=> task.id !== id ))
-}
+// const deleteMe=(id)=>{
+//   setaddList(addList.filter((task)=> task.id !== id ))
+// }
 const MarkDoneTask =(id)=>{
   setaddList(addList.map((task)=> task.id === id ?  {...task, complete:true}: task ));
   setMark(true);
